@@ -20,7 +20,7 @@ plugin_enable = False
 logging_enable = False
 
 
-driverpath = './config/chromedriver.exe'
+driverpath = '/workspaces/chromedriver-linux64/chromedriver'
 
 magicalpath = './config/magical.db'
 
