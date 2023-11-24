@@ -8,6 +8,7 @@ wget https://edgedl.me.gvt1.com/edgedl/chrome/chrome-for-testing/119.0.6045.159/
 unzip chromedriver-linux64.zip
 chmod 777 chromedriver-linux64/chromedriver
 sudo cp -r chromedriver-linux64/chromedriver magical_spider/config/chromedriver
+pip install git+https://www.github.com/ultrafunkamsterdam/undetected-chromedriver@master
 pip install flask
 #pip install sqlite3
 pip install selenium
