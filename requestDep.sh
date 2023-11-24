@@ -9,6 +9,7 @@ unzip chromedriver-linux64.zip
 chmod 777 chromedriver-linux64/chromedriver
 sudo cp -r chromedriver-linux64/chromedriver magical_spider/config/chromedriver
 pip install git+https://www.github.com/ultrafunkamsterdam/undetected-chromedriver@master
+pip install reloading
 pip install flask
 #pip install sqlite3
 pip install selenium

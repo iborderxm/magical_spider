@@ -48,7 +48,8 @@ class Browser():
             options.add_argument('--disable-gpu')
             options.add_argument('--disable-dev-shm-usage')
 
-        self.browser = webdriver.Chrome(driver_executable_path=driverpath, options=options)
+        options.binary_location = driverpath
+        self.browser = webdriver.Chrome(options=options)
         if stealth_enable:
             self.stealth_enable()
 
