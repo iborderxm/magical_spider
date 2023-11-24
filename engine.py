@@ -4,15 +4,19 @@ from db import *
 from models import Process
 from selenium import webdriver
 from selenium.webdriver.remote.webdriver import WebDriver
+from reloading import reloading
 
-
+@reloading
 def create_browser(url,name):
-    bro = Browser()
-    browser = bro.start_request(url)
-    session_id = browser.session_id
-    process_url = browser.command_executor._url
-    insert_process(Process(session_id,name,process_url,url))
-    return browser
+    try:
+        bro = Browser()
+        browser = bro.start_request(url)
+        session_id = browser.session_id
+        process_url = browser.command_executor._url
+        insert_process(Process(session_id,name,process_url,url))
+        return browser
+    except Exception as e:
+        print(f'Error in create_browser: {e}')
 
 def attachToSession(session_id,url):
     original_execute = WebDriver.execute

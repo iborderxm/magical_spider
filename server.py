@@ -4,8 +4,9 @@ from flask import Flask,session
 from flask import render_template,request,redirect,url_for,jsonify
 import os
 from engine import *
-from config.system_info import SystemInfoUtil
+#from config.system_info import SystemInfoUtil
 from settings import host,port
+from reloading import reloading
 
 
 app = Flask(__name__)
@@ -17,20 +18,23 @@ app.config['SEND_FILE_MAX_AGE_DEFAULT'] = timedelta(days=7)
 def index_info():
     process = select_all_process()
     if not process:process=[["","没有在运行的任务","",""]]
-    disk_usage = SystemInfoUtil.get_disk_usage()
-    virtual_memory = SystemInfoUtil.get_virtual_memory()
-    return render_template('index.html',process=process,disk_usage=disk_usage,virtual_memory=virtual_memory)
+    #disk_usage = SystemInfoUtil.get_disk_usage()
+    #virtual_memory = SystemInfoUtil.get_virtual_memory()
+    return render_template('index.html',process=process)
 
-
+@reloading
 @app.route('/create',methods=['POST'])
 def browser_start():
     url = request.form.get("url")
     name = request.form.get("name")
+    print(f'url: {url}')
+    print(f'name: {name}')
     try:
         create_browser(url,name)
         session_id, process_name, process_url, datetime,base_url = select_process_name(name)
         result = {'session_id': session_id, 'process_name': process_name,
                   'process_url': process_url, 'datetime': datetime}
+        print(f'result: {result}')
         return jsonify(result)
     except:
         return jsonify({"result":0,"detail":"驱动配置错误或任务名已存在"})

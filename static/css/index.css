@@ -1,8 +1,8 @@
+/*
 body{
     background: url(/static/image/bg.png);
-    background-size: 100% 100%;
     background-repeat:no-repeat;
-}
+}*/
 a{
     text-decoration:none;
 }
@@ -10,11 +10,6 @@ p{
     font-size: 18px;
     color: white;
 }
-img{
-    width: 207.99px;
-    height: 207.99px;
-}
-
 
 table{
     border-collapse: collapse;
@@ -39,21 +34,4 @@ table tr:nth-child(odd)
 table tr:nth-child(even)
 {
     background: #F5FAFA;
-}
-
-.lx{
-    display: inline-block;
-    margin-left: 5%;
-}
-.bt{
-     font-weight:bold;
-     color:#5b91d6;
-}
-.blog{
-    border:solid;
-    border-color:#5784d0;
-    width: 10%;
-    margin-left: 65.6%;
-    position: fixed;
-    top: 0;
 }
